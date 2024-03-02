@@ -1,7 +1,7 @@
 {
   "name": "elmen",
   "description": "Elmen is a simple boilerplate generator for ts projects",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "malezjaa <https://www.github.com/malezjaa>",
   "homepage": "https://www.github.com/malezjaa/elmen",
