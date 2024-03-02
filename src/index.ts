@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { defineCommand, type ParsedArgs, runMain, showUsage } from "citty";
 import { version } from "../package.json";
 import consola from "consola";

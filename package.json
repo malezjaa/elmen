@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://www.github.com/malezjaa/elmen"
   },
+  "bin": {
+    "elmen": "./dist/index.js"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
