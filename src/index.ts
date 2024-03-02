@@ -67,9 +67,10 @@ const main = defineCommand({
     },
   },
   async run({ args }) {
+    console.log(args);
+    const name = args.name ?? "example-project";
     const type = args.type as ProjectType;
     const noTest = parseNoOption("test", args, false);
-    const name = args.name ?? "example-project";
     const projectPath = path.join(process.cwd(), name);
     const buildTool = args.build as BuildTool;
     const noPrettier = parseNoOption("prettier", args, false);
