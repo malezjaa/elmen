@@ -32,6 +32,11 @@ const main = defineCommand({
     description: "Elmen is a simple boilerplate generator for ts projects",
   },
   args: {
+    name: {
+      type: "string",
+      description: "name of the project",
+      required: true,
+    },
     "no-test": {
       type: "boolean",
       description: "don't add test packages",
@@ -41,11 +46,6 @@ const main = defineCommand({
       description: "type of project",
       required: true,
       valueHint: "integrated | standalone",
-    },
-    name: {
-      type: "positional",
-      description: "name of the project",
-      required: true,
     },
     build: {
       type: "string",
@@ -67,10 +67,9 @@ const main = defineCommand({
     },
   },
   async run({ args }) {
-    consola.box("Elmen");
     const type = args.type as ProjectType;
     const noTest = parseNoOption("test", args, false);
-    const name = args.name;
+    const name = args.name ?? "example-project";
     const projectPath = path.join(process.cwd(), name);
     const buildTool = args.build as BuildTool;
     const noPrettier = parseNoOption("prettier", args, false);

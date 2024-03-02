@@ -17,7 +17,7 @@
 ## Usage
 
 ```bash
-pnpm dlx elmen <project-name> [--type=standalone|integrated] [--build=tsup|unbuild] 
+pnpm dlx elmen [--name=<project-name>] [--type=standalone|integrated] [--build=tsup|unbuild] 
 [--no-git] [--no-prettier] [-no-eslint] [--no-test]
 ```
 
