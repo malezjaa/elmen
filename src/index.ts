@@ -65,6 +65,12 @@ const main = defineCommand({
       type: "boolean",
       description: "don't add eslint",
     },
+    pm: {
+      type: "string",
+      description: "package manager",
+      default: "npm",
+      valueHint: "pnpm | yarn | npm | bun",
+    },
   },
   async run({ args }) {
     console.log(args);
@@ -76,6 +82,7 @@ const main = defineCommand({
     const noPrettier = parseNoOption("prettier", args, false);
     const noGit = parseNoOption("git", args, false);
     const noEslint = parseNoOption("eslint", args, false);
+    const pm = args.pm as string;
 
     if (fs.existsSync(projectPath)) {
       consola.error(`Path already exists: ${projectPath}`);
@@ -92,15 +99,10 @@ const main = defineCommand({
       return;
     }
 
-    //TODO: find one with bun support
-    const result = await whichpm(process.cwd());
-    const pm = result.name;
     const installCommand =
-      pm === "yarn"
-        ? "yarn add"
-        : pm === "pnpm"
-        ? "pnpm install"
-        : "npm install";
+      pm === "npm" || pm === "bun" || pm === "pnpm"
+        ? `${pm} install`
+        : `${pm} add`;
     const installDev = `${installCommand} -D @types/node ${buildTool} typescript ${
       !noPrettier ? "prettier" : ""
     } ${!noEslint ? "eslint eslint-config-unjs" : ""} ${
